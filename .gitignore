@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# But not this directories
+!wp-content/
+!wp-content/*
