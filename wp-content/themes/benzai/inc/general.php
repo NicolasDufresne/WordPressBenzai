@@ -43,7 +43,7 @@ function benzai_scripts()
 {
     //CSS
     wp_enqueue_style('benzai-style', get_stylesheet_uri());
-
+    wp_enqueue_script("jquery");
 }
-
 add_action('wp_enqueue_scripts', 'benzai_scripts');
+
