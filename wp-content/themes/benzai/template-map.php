@@ -15,8 +15,27 @@
     <label for='satellite'>satellite</label>
 </div>
 <script>
+    //Token
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
+    function setup(longitude,latitude){
+        if (longitude === 0 && latitude === 0){
+            //Creation de la map
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styleivals/mapbox/streets-v11',
+                center: [-103.59179687498357, 40.66995747013945],
+                zoom: 3
+            });
+        }else {
+            //Creation de la map
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styleivals/mapbox/streets-v11',
+                center: [longitude, latitude],
+                zoom: 10
+            });
+        }
 
-    function setup(){
         //Appel à l'API
         var request = JSON.parse(httpGet("https://angotbaptiste.com/test.php"));
 
@@ -32,7 +51,6 @@
                 clusterMaxZoom: 14, // Max zoom to cluster points on
                 clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
             });
-
             map.addLayer({
                 id: "clusters",
                 type: "circle",
@@ -128,9 +146,6 @@
         }));
     }
 
-    //Token
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
-
     function httpGet(theUrl)
     {
         var xmlHttp = new XMLHttpRequest();
@@ -142,25 +157,26 @@
     /* Geolocalisation native navigateur*/
     function success(pos) {
         //Creation de la map
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styleivals/mapbox/streets-v11',
-            center: [pos.coords.longitude, pos.coords.latitude],
-            zoom: 10
-        });
-        setup();
+        // var map = new mapboxgl.Map({
+        //     container: 'map',
+        //     style: 'mapbox://styleivals/mapbox/streets-v11',
+        //     center: [pos.coords.longitude, pos.coords.latitude],
+        //     zoom: 10
+        // });
+        setup(pos.coords.longitude,pos.coords.latitude);
     }
 
     function error(err) {
-        //Creation de la map
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styleivals/mapbox/streets-v11',
-            center: [-103.59179687498357, 40.66995747013945],
-            zoom: 3
-        });
-        setup();
+        // //Creation de la map
+        // var map = new mapboxgl.Map({
+        //     container: 'map',
+        //     style: 'mapbox://styleivals/mapbox/streets-v11',
+        //     center: [-103.59179687498357, 40.66995747013945],
+        //     zoom: 3
+        // });
+        setup(0,0);
     }
     navigator.geolocation.getCurrentPosition(success, error);
+
 </script>
 <?php get_footer(); ?>
