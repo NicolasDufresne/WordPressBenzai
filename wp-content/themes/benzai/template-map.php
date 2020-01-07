@@ -2,18 +2,6 @@
 <?php get_header(); ?>
 
 <div id='map' style='width: 1200px; height: 600px;'></div>
-<div id='menu'>
-    <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked'>
-    <label for='streets'>streets</label>
-    <input id='light-v10' type='radio' name='rtoggle' value='light'>
-    <label for='light'>light</label>
-    <input id='dark-v10' type='radio' name='rtoggle' value='dark'>
-    <label for='dark'>dark</label>
-    <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors'>
-    <label for='outdoors'>outdoors</label>
-    <input id='satellite-v9' type='radio' name='rtoggle' value='satellite'>
-    <label for='satellite'>satellite</label>
-</div>
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
@@ -130,12 +118,17 @@
 
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
-                    .setHTML(description)
+                    .setHTML(
+                        "Ville: " +  e.features[0].properties.commune + "<br>" +
+                        "Adresse: " + e.features[0].properties.adresse + "<br>" +
+                        "Code postal: " + e.features[0].properties.code_com + "<br>" +
+                        "Status: "+ " A DEFINIR" + "<br>" +
+                        "<button> Bonne état </button><br>"+
+                        "<button> Mauvaise état </button><br>"
+                    )
                     .addTo(map);
             });
         });
-
-
 
         map.on('mouseenter', 'clusters', function () {
             map.getCanvas().style.cursor = 'pointer';
