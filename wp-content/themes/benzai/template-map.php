@@ -2,18 +2,6 @@
 <?php get_header(); ?>
 
 <div id='map' style='width: 1200px; height: 600px;'></div>
-<div id='menu'>
-    <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked'>
-    <label for='streets'>streets</label>
-    <input id='light-v10' type='radio' name='rtoggle' value='light'>
-    <label for='light'>light</label>
-    <input id='dark-v10' type='radio' name='rtoggle' value='dark'>
-    <label for='dark'>dark</label>
-    <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors'>
-    <label for='outdoors'>outdoors</label>
-    <input id='satellite-v9' type='radio' name='rtoggle' value='satellite'>
-    <label for='satellite'>satellite</label>
-</div>
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
@@ -109,20 +97,36 @@
                     }
                 });
             });
-        });
+            // inspect a cluster on click
+            map.on('click', 'clusters', function (e) {
+                var features = map.queryRenderedFeatures(e.point, {layers: ['clusters']});
+                var clusterId = features[0].properties.cluster_id;
+                map.getSource('BIN').getClusterExpansionZoom(clusterId, function (err, zoom) {
+                    if (err)
+                        return;
 
-        // inspect a cluster on click
-        map.on('click', 'clusters', function (e) {
-            var features = map.queryRenderedFeatures(e.point, {layers: ['clusters']});
-            var clusterId = features[0].properties.cluster_id;
-            map.getSource('BIN').getClusterExpansionZoom(clusterId, function (err, zoom) {
-                if (err)
-                    return;
-
-                map.easeTo({
-                    center: features[0].geometry.coordinates,
-                    zoom: zoom
+                    map.easeTo({
+                        center: features[0].geometry.coordinates,
+                        zoom: zoom
+                    });
                 });
+            });
+
+            map.on('click','unclustered-point',function (e) {
+                var description = e.features[0].properties.commune;
+                var coordinates = e.features[0].geometry.coordinates.slice();
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(
+                        "Ville: " +  e.features[0].properties.commune + "<br>" +
+                        "Adresse: " + e.features[0].properties.adresse + "<br>" +
+                        "Code postal: " + e.features[0].properties.code_com + "<br>" +
+                        "Status: "+ " A DEFINIR" + "<br>" +
+                        "<button> Bonne état </button><br>"+
+                        "<button> Mauvaise état </button><br>"
+                    )
+                    .addTo(map);
             });
         });
 
