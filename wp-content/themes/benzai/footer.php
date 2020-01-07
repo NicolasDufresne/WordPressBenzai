@@ -20,7 +20,7 @@
                     <?php //echo get_template_directory_uri(); ?><!--/assets/img/benzai_bouteille.svg">-->
                     <p class="usefull">Aucune information vous concernant n'est stockée dans nos bases de donnée. Pour
                         plus d'informations, merci de consulter le liens suivant : <a target="_blank"
-                                                                                    href="https://www.cnil.fr/fr/respecter-les-droits-des-personnes">respecter
+                                                                                      href="https://www.cnil.fr/fr/respecter-les-droits-des-personnes">respecter
                             les droits des
                             personnes</a>.</p>
                 </div>
@@ -45,6 +45,7 @@
                                         src="<?php echo get_template_directory_uri(); ?>/assets/img/social/instagram.svg"
                                         alt="Instagram"></a>
                         </li>
+                        <div class="clear"></div>
                     </ul>
                 </div>
             </div>
@@ -65,7 +66,7 @@
 </footer>
 
 <div class="copyright">
-    <p> Copyright ©2019 All rights reserved | Benzai </p>
+    <p><a href="#"> Copyright ©2019 All rights reserved </a> | Benzai </p>
 </div>
 <?php wp_footer(); ?>
 
@@ -105,6 +106,20 @@
     });
 
 
+</script>
+
+<script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+    }
 </script>
 
 </body>

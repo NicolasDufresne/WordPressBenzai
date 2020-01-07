@@ -36,12 +36,16 @@
 <nav class="nav">
     <div class="container">
         <div class="logo">
-            <a href="#">Benzai</a>
+            <a href="<?php echo esc_url(home_url('/')); ?>">Benzai</a>
         </div>
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
-                <!--                <li><a href="#">Accueil</a></li>-->
-                <!--                <li><a href="#">Map</a></li>-->
+                <li><a href="<?php echo esc_url(home_url('login')); ?>">Connexion</a></li>
+                <li><a href="http://localhost/WordPressBenzaiTheme/#about">À propos</a></li>
+                <li><a href="http://localhost/WordPressBenzaiTheme/#benzai">Qu'est-ce que Benzai ?</a></li>
+                <li><a href="http://localhost/WordPressBenzaiTheme/#gallery">Gallerie</a></li>
+                <li><a href="http://localhost/WordPressBenzaiTheme/#clients">Avis utilisateur</a></li>
+                <li><a href="http://localhost/WordPressBenzaiTheme/#contact">Nous contacter</a></li>
             </ul>
         </div>
         <span class="navTrigger">
@@ -51,3 +55,7 @@
             </span>
     </div>
 </nav>
+
+<div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+</div>

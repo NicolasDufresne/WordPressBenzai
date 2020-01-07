@@ -18,10 +18,9 @@
                 <div class="blog-slide-img">
                     <?= the_post_thumbnail('', array('class' => 'img-home')); ?>
                     <div class="centered wow fadeIn">
-                        <?= get_the_title(); ?>
+                        <?= get_the_title(); ?> <br />
+                        <a href="#">Commencer maintenant</a>
                     </div>
-                    <a href="#">Commencer maintenant</a>
-
                 </div>
             </div> <?php
         } else {
@@ -293,15 +292,20 @@
         <div class="wrap">
             <h1 class="title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Nous contacter</h1>
             <hr/>
-            <form class="main-form wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" method="post">
-                <label for="email">Adresse mail</label>
-                <input name="email" id="email" type="text" placeholder="Email" value=""/>
-                <label for="textarea">Commentaire</label>
-                <textarea id="textarea" name="textarea" placeholder="Commentaire"></textarea>
-                <div class="submit">
+            <form class="main-form" method="post">
+                <label for="email" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">Adresse
+                    mail</label>
+                <input class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" name="email" id="email"
+                       type="text" placeholder="Email" value=""/>
+                <label class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"
+                       for="textarea">Commentaire</label>
+                <textarea class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" id="textarea"
+                          name="textarea" placeholder="Commentaire"></textarea>
+                <div class="submit wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
                     <input type="submit" name="submitted" value="Envoyer" id="button"/>
                 </div>
             </form>
     </section>
+
 
 <?php get_footer();

@@ -81,11 +81,12 @@ body {
 
 .nav {
     width: 100%;
-    height: 45px;
+    height: 75px;
     position: fixed;
-    line-height: 45px;
+    line-height: 75px;
     text-align: center;
     z-index: 50;
+    background-color: white;
 }
 
 .nav div.logo {
@@ -97,7 +98,7 @@ body {
 
 .nav div.logo a {
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 .nav div.logo a:hover {
@@ -128,7 +129,6 @@ body {
 .nav div.main_list ul li a {
     text-decoration: none;
     color: #999;
-    line-height: 65px;
 }
 
 .nav div.main_list ul li a:hover {
@@ -154,7 +154,7 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .navTrigger {
         display: block;
     }
@@ -209,7 +209,7 @@ body {
 .navTrigger {
     cursor: pointer;
     width: 30px;
-    height: 35px;
+    height: 15px;
     margin: auto;
     position: absolute;
     right: 30px;
@@ -398,7 +398,6 @@ body {
 .affix {
     padding: 0;
     background-color: #FFF;
-    border-bottom: solid #DDD 1px;
 }
 
 /* Home section */
@@ -406,11 +405,16 @@ body {
 .img-home {
     width: 100%;
     height: 100vh;
+    filter: brightness(70%);
 }
 
 .container {
     position: relative;
     text-align: center;
+}
+
+.container a {
+
 }
 
 .container h1 {
@@ -435,6 +439,7 @@ body {
     z-index: 10;
     opacity: .9;
     padding: 10px;
+
 }
 
 .centered a {
@@ -456,7 +461,7 @@ body {
 }
 
 .title {
-    padding-top: 85px;
+    padding-top: 150px;
     padding-bottom: 10px;
     font-size: 25px;
     text-transform: uppercase;
@@ -464,18 +469,21 @@ body {
 }
 
 .container-box {
-    width: 33%;
+    width: 29%;
     float: left;
     padding: 30px;
+    margin: 20px;
     font-size: 13px;
     line-height: 1.5;
+    background-color: #EEE;
+    /*height: 300px;*/
 }
 
 .container-box h1 {
     text-align: center;
     color: #5de65d;
     font-size: 20px;
-    padding: 20px 0 20px 0;
+    padding: 10px 0 0 0;
 }
 
 .center-img {
@@ -507,7 +515,6 @@ body {
 
 hr {
     width: 7%;
-    margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     border-top-color: currentcolor;
@@ -553,7 +560,7 @@ hr {
 #parallax-world-of-ugg h2 {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     text-align: center;
     color: #000;
     font-weight: 400;
@@ -568,7 +575,7 @@ hr {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    text-align: center;
+    text-align: justify;
 }
 
 #parallax-world-of-ugg a {
@@ -655,8 +662,6 @@ hr {
 /* Section - Parallax */
 /**************************/
 #parallax-world-of-ugg .parallax-one {
-    padding-top: 0px;
-    padding-bottom: 0px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -670,8 +675,8 @@ hr {
 }
 
 #parallax-world-of-ugg .parallax-hash {
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 200px;
+    padding-bottom: 200px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -716,6 +721,11 @@ hr {
     }
 
     #parallax-world-of-ugg .parallax-one, #parallax-world-of-ugg .parallax-two, #parallax-world-of-ugg .parallax-three {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    #parallax-world-of-ugg .parallax-hash {
         padding-top: 100px;
         padding-bottom: 100px;
     }
@@ -745,7 +755,7 @@ hr {
     border-radius: 4px;
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 10px;
     transition: background-color .3s,
     opacity .5s, visibility .5s;
     opacity: 0;
@@ -1072,6 +1082,21 @@ footer {
     background-color: #111;
 }
 
+.copyright a {
+    color: #666;
+    text-decoration: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.copyright a:hover {
+    color: #31df31;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
 .copyright p {
     font-family: 'Open sans', sans-serif;
     color: #666;
@@ -1083,7 +1108,7 @@ footer {
 /* contact */
 
 #contact {
-    padding-bottom: 125px;
+    padding-bottom: 135px;
 }
 
 #form-global {
@@ -1109,11 +1134,7 @@ footer {
     margin: 0 auto;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="datetime-local"],
-input[type="url"],
-select {
+input[type="text"] {
     background: #EAE6E1;
     border: 0;
     padding: 10px;
@@ -1153,40 +1174,8 @@ textarea {
     margin-top: 20px;
 }
 
-.input-bttn input[type="submit"] {
-    display: block;
-    padding: 5px;
-    background: #5de65d;
-    border: 0;
-    border-radius: 3px;
-    font-weight: bold;
-    width: 40%;
-    color: #fff;
-    cursor: pointer;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    margin-top: 20px;
-}
-
-.input-bbtn {
-    display: block;
-    padding: 10px;
-    background: #50BFA4;
-    border: 0;
-    border-radius: 3px;
-    font-weight: bold;
-    width: 50%;
-    color: #fff;
-    cursor: pointer;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    margin-top: 20px;
-}
-
 .main-form input[type="submit"]:hover {
-    background: #5de65d;
+    background: #31df31;
     cursor: pointer;
 }
 
@@ -1204,6 +1193,7 @@ textarea {
     margin: 10px 0 15px;
     line-height: 15px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .main-form > a {
@@ -1220,5 +1210,134 @@ textarea {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         transition: all 0.3s;
+    }
+}
+
+/* login */
+
+.login-page {
+    width: 360px;
+    padding: 14% 0 0;
+    margin: auto;
+}
+
+.form-login {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    background-color: #EEE;
+}
+
+.form-login input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: white;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-login input[type="submit"] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form-login input[type="submit"]:hover, .form-login input[type="submit"]:active, .form-login input[type="submit"]:focus {
+    background: #43A047;
+}
+
+.form-login .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.form-login .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+/* scrollbar */
+
+.progress-container {
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    position: fixed;
+    z-index: 50;
+    margin-top: 75px;
+}
+
+.progress-bar {
+    height: 2px;
+    background: #5de65d;
+    position: fixed;
+    z-index: 50;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 640px) {
+    .container-box {
+        float: none;
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    .parallax-infos {
+        width: 90%;
+    }
+
+    #parallax-world-of-ugg h2 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .columns {
+        width: 100%;
+        float: none;
+    }
+
+    .main-form {
+        width: 100%;
+        padding: 0;
+    }
+
+    .centered {
+        font-size: 30px;
+    }
+
+    .img-home {
+        height: 50vh;
+    }
+
+    .social li {
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .img-solo {
+        float: none;
+        margin: 0 auto;
+        width: 75%;
     }
 }
