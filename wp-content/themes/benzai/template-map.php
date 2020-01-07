@@ -156,24 +156,10 @@
 
     /* Geolocalisation native navigateur*/
     function success(pos) {
-        //Creation de la map
-        // var map = new mapboxgl.Map({
-        //     container: 'map',
-        //     style: 'mapbox://styleivals/mapbox/streets-v11',
-        //     center: [pos.coords.longitude, pos.coords.latitude],
-        //     zoom: 10
-        // });
         setup(pos.coords.longitude,pos.coords.latitude);
     }
 
     function error(err) {
-        // //Creation de la map
-        // var map = new mapboxgl.Map({
-        //     container: 'map',
-        //     style: 'mapbox://styleivals/mapbox/streets-v11',
-        //     center: [-103.59179687498357, 40.66995747013945],
-        //     zoom: 3
-        // });
         setup(0,0);
     }
     navigator.geolocation.getCurrentPosition(success, error);
