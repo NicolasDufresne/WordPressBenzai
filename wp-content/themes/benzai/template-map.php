@@ -1,7 +1,21 @@
 <?php /* Template Name: Map */ ?>
 <?php get_header(); ?>
-
+<style>
+    .geocoder {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        left: 50%;
+        margin-left: -25%;
+        top: 20px;
+    }
+    .mapboxgl-ctrl-geocoder {
+        min-width: 50%;
+    }
+</style>
 <div id='map' style='width: 1200px; height: 600px;'></div>
+<div id="geocoder" class="geocoder">
+</div>
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
@@ -113,7 +127,6 @@
             });
 
             map.on('click','unclustered-point',function (e) {
-                var description = e.features[0].properties.commune;
                 var coordinates = e.features[0].geometry.coordinates.slice();
 
                 new mapboxgl.Popup()
@@ -137,11 +150,17 @@
             map.getCanvas().style.cursor = '';
         });
 
-        // Creation de la barre de recherche
-        map.addControl(new MapboxGeocoder({
+        var geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        }));
+            mapboxgl: mapboxgl,
+            placeholder: 'Faite une recherche ici'
+        });
+        // Creation de la barre de recherche
+        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+        geocoder.on('results', function(results) {
+            console.log(results.query);
+        });
+
         //Creation de la geolocalisation
         map.addControl(new mapboxgl.GeolocateControl({
             positionOptions: {
@@ -169,6 +188,5 @@
         setup(0,0);
     }
     navigator.geolocation.getCurrentPosition(success, error);
-
 </script>
 <?php get_footer(); ?>
