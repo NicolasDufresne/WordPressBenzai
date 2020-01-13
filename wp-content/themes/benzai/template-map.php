@@ -175,15 +175,17 @@
             trackUserLocation: true
         }));
 
-        map.addControl(
-            new MapboxDirections({
+
+        //Creation du GPS
+        var GPS = new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
                 interactive: false,
                 unit: 'metric',
                 language: 'fr',
-            }),
-            'bottom-left'
-        );
+            });
+        map.addControl(GPS,'bottom-left');
+        GPS.setOrigin('Brockton Avenue, Toronto');
+        GPS.setDestination('East York Avenue, Toronto');
 
     }
 
