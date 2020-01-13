@@ -178,10 +178,13 @@
         map.addControl(
             new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
-                interactive: false
+                interactive: false,
+                unit: 'metric',
+                language: 'fr',
             }),
             'bottom-left'
         );
+
     }
 
     function httpGet(theUrl)
