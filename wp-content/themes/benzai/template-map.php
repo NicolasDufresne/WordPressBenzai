@@ -184,8 +184,10 @@
                 language: 'fr',
             });
         map.addControl(GPS,'bottom-left');
-        GPS.setOrigin('Brockton Avenue, Toronto');
-        GPS.setDestination('East York Avenue, Toronto');
+
+        if (latitude !== 0 && longitude !== 0){
+            GPS.setOrigin([longitude,latitude]);
+        }
 
     }
 
