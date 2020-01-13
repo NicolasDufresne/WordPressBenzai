@@ -18,7 +18,7 @@
                 <div class="blog-slide-img">
                     <?= the_post_thumbnail('', array('class' => 'img-home')); ?>
                     <div class="centered wow fadeIn">
-                        <?= get_the_title(); ?> <br />
+                        <?= get_the_title(); ?> <br/>
                         <a href="#">Commencer maintenant</a>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
 
     <section id="gallery">
         <div class="wrap">
-            <h1 class="title wow fadeInUp" data-wow-duration="1s">Gallerie</h1>
+            <h1 class="title wow fadeInUp" data-wow-duration="1s">Galerie</h1>
             <hr/>
             <div class="images">
                 <?php $query = new WP_Query(
@@ -218,7 +218,7 @@
                     <div class="center-img">
                         <?= the_post_thumbnail('users', array('class' => 'ppUsers')); ?>
                     </div>
-                    <div class="text-about"><?= get_the_content(); ?>
+                    <div class="text-about-clients"><?= get_the_content(); ?>
                         <br/>
                         <p class="author">— <?= get_the_title(); ?></p>
                     </div>
@@ -244,7 +244,7 @@
                     <div class="center-img">
                         <?= the_post_thumbnail('users', array('class' => 'ppUsers')); ?>
                     </div>
-                    <div class="text-about"><?= get_the_content(); ?>
+                    <div class="text-about-clients"><?= get_the_content(); ?>
                         <br/>
                         <p class="author">— <?= get_the_title(); ?></p>
                     </div>
@@ -270,7 +270,7 @@
                     <div class="center-img">
                         <?= the_post_thumbnail('users', array('class' => 'ppUsers')); ?>
                     </div>
-                    <div class="text-about"><?= get_the_content(); ?>
+                    <div class="text-about-clients"><?= get_the_content(); ?>
                         <br/>
                         <p class="author">— <?= get_the_title(); ?></p>
                     </div>

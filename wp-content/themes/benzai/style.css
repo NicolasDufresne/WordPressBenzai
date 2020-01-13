@@ -65,6 +65,7 @@ body {
     font-size: 16px;
     color: #333;
     scroll-behavior: smooth;
+    min-width: 350px;
 }
 
 .wrap {
@@ -405,7 +406,7 @@ body {
 .img-home {
     width: 100%;
     height: 100vh;
-    filter: brightness(70%);
+    filter: brightness(50%);
 }
 
 .container {
@@ -450,7 +451,18 @@ body {
     background-color: #FFF;
     padding: 10px;
     border-radius: 50px;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    border: 1px solid transparent;
 }
+
+.centered a:hover {
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    color: green;
+    border: 1px solid green;
+}
+
 
 /* About section */
 
@@ -475,7 +487,7 @@ body {
     margin: 20px;
     font-size: 13px;
     line-height: 1.5;
-    background-color: #EEE;
+    background-color: whitesmoke;
     /*height: 300px;*/
 }
 
@@ -495,6 +507,16 @@ body {
     text-align: center;
     margin-top: 30px;
     font-style: italic;
+}
+
+.text-about-clients {
+    text-align: center;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+.text-about-clients p {
+    height: 50px;
 }
 
 /* clients section */
@@ -1294,11 +1316,48 @@ textarea {
 
 /* Responsive */
 
+@media screen and (max-width: 900px) {
+    .img-home {
+        height: 75vh;
+    }
+
+    .social li {
+        padding: 2px;
+    }
+
+    .container-box {
+        float: none;
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    .parallax-infos {
+        width: 80%;
+    }
+
+    #parallax-world-of-ugg h2 {
+        font-size: 20px;
+    }
+
+    .img-solo {
+        float: left;
+        margin: 0 auto;
+        width: 50%;
+        min-width: 300px;
+    }
+}
+
 @media screen and (max-width: 640px) {
     .container-box {
         float: none;
         width: 100%;
         margin: 0 0 5px 0;
+    }
+
+    .img-solo {
+        float: left;
+        margin: 0 auto;
+        width: 50%;
     }
 
     .parallax-infos {
@@ -1322,6 +1381,7 @@ textarea {
 
     .centered {
         font-size: 30px;
+        top: 60%;
     }
 
     .img-home {
@@ -1329,15 +1389,12 @@ textarea {
     }
 
     .social li {
-        padding: 25px;
+        padding: 20px;
     }
-}
 
-@media screen and (max-width: 850px) {
-
-    .img-solo {
-        float: none;
-        margin: 0 auto;
-        width: 75%;
+    .centered a {
+        color: white;
+        background-color: transparent;
+        padding: 0;
     }
 }
