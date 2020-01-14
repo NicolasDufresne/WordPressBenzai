@@ -131,18 +131,22 @@
                 });
             });
 
-            map.on('click','unclustered-point',function (e) {
-                var coordinates = e.features[0].geometry.coordinates.slice();
+            map.on('click','unclustered-point',function (f) {
+                var coordinates = f.features[0].geometry.coordinates.slice();
+                document.cookie = coordinates;
+                array = [];
+                array.push(document.cookie.split(';'));
 
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(
-                        "Ville: " +  e.features[0].properties.commune + "<br>" +
-                        "Adresse: " + e.features[0].properties.adresse + "<br>" +
-                        "Code postal: " + e.features[0].properties.code_com + "<br>" +
+                        "Ville: " +  f.features[0].properties.commune + "<br>" +
+                        "Adresse: " + f.features[0].properties.adresse + "<br>" +
+                        "Code postal: " + f.features[0].properties.code_com + "<br>" +
                         "Status: "+ " A DEFINIR" + "<br>" +
                         "<button> Bonne état </button><br>"+
                         "<button> Mauvaise état </button><br>"
+                        // "<button onclick= localStorage.setItem('Coords',array[0][0]);" + ">Test </button>"
                     )
                     .addTo(map);
             });
@@ -175,20 +179,33 @@
             trackUserLocation: true
         }));
 
-
-        //Creation du GPS
-        var GPS = new MapboxDirections({
+        if (latitude !== 0 && longitude !== 0){
+            //Creation du GPS
+            var GPS = new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
-                interactive: false,
+                controls: {
+                    inputs: false,
+                },
+                interactive: true,
                 unit: 'metric',
                 language: 'fr',
             });
-        map.addControl(GPS,'bottom-left');
-
-        if (latitude !== 0 && longitude !== 0){
+            map.addControl(GPS,'bottom-left');
             GPS.setOrigin([longitude,latitude]);
         }
-
+        else{
+            //Creation du GPS
+            var GPS = new MapboxDirections({
+                accessToken: mapboxgl.accessToken,
+                controls: {
+                    inputs: true,
+                },
+                interactive: true,
+                unit: 'metric',
+                language: 'fr',
+            });
+            map.addControl(GPS,'bottom-left');
+        }
     }
 
     function httpGet(theUrl)
@@ -207,6 +224,9 @@
     function error(err) {
         setup(0,0);
     }
+
+
     navigator.geolocation.getCurrentPosition(success, error);
+
 </script>
 <?php get_footer(); ?>
