@@ -40,6 +40,9 @@
         </div>
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
+                <?php if (isLogged('user', 'id', 'email', 'role', 'ip')) { ?>
+                    <li><a href="<?php echo esc_url(home_url('disconnect')); ?>">Déconnexion</a></li>
+                <?php } ?>
                 <li><a href="<?php echo esc_url(home_url('login')); ?>">Connexion</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#about">À propos</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#benzai">Qu'est-ce que Benzai ?</a></li>
