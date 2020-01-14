@@ -1237,20 +1237,38 @@ textarea {
 
 /* login */
 
+.errors {
+    font-weight: lighter;
+    color: red;
+    font-size: 11px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+.login-page img {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
 .login-page {
     width: 360px;
-    padding: 14% 0 0;
+    padding: 8% 0 0;
     margin: auto;
 }
 
 .form-login {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
     background-color: #EEE;
 }
 
@@ -1398,3 +1416,4 @@ textarea {
         padding: 0;
     }
 }
+

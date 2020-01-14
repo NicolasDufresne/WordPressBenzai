@@ -7,9 +7,9 @@ if (!empty($_POST['submitted'])) {
     $creds['user_password'] = $_POST['password'];
     $creds['remember'] = true;
 
-    $user = wp_signon($creds, false);
+    $user = wp_signon( $creds, false );
 
-    if (is_wp_error($user)) {
+    if ( is_wp_error($user) ) {
         echo $user->get_error_message();
     }
     print_r($_SESSION);

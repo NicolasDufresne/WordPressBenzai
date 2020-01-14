@@ -122,6 +122,30 @@
     }
 </script>
 
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password_show");
+        var y = document.getElementById("password_confirmed_show")
+        if (x.type === "password" && y.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+    }
+</script>
+<script language="javascript">
+    function changeImage() {
+
+        if (document.getElementById("imgClickAndChange").src === "<?= get_template_directory_uri() . '/assets/img/icons/hide.png'; ?>") {
+            document.getElementById("imgClickAndChange").src = "<?= get_template_directory_uri() . '/assets/img/icons/show.png'; ?>";
+        } else {
+            document.getElementById("imgClickAndChange").src = "<?= get_template_directory_uri() . '/assets/img/icons/hide.png'; ?>";
+        }
+    }
+</script>
 </body>
 
 </html>
