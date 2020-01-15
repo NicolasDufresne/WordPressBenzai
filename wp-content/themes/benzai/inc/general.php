@@ -50,9 +50,9 @@ function benzai_scripts()
     //WOW.MIN.JS
     wp_register_script('wow', get_template_directory_uri() . '/assets/js/wow.min.js', array(), '1.0.1');
     wp_enqueue_script('wow');
-
+    wp_enqueue_style('benzai-style', get_stylesheet_uri());
+    wp_enqueue_script("jquery");
 }
-
 add_action('wp_enqueue_scripts', 'benzai_scripts');
 
 add_image_size('users', 125, 125, true);
