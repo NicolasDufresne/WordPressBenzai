@@ -83,8 +83,8 @@ endif;
                 <span class="errors"><?= $errors['user_password'] ?></span>
                 <input type="password" id="password_show" name="password" placeholder="Mot de passe"/>
                 <label class="label_checkbox" for="checkbox">
-<!--                    <img src="--><?//= get_template_directory_uri() . '/assets/img/icons/hide.png'; ?><!--" alt="show_password"-->
-<!--                         id="imgClickAndChange" onclick="changeImage()"/>-->
+                    <img src="<?= get_template_directory_uri() . '/assets/img/icons/hide.png'; ?>" alt="show_password"
+                         id="imgClickAndChange" onclick="changeImage()"/>
                 </label>
                 <div class="clear"></div>
                 <input type="checkbox" onclick="myFunction()" id="checkbox">
@@ -98,4 +98,5 @@ endif;
             </form>
         </div>
     </div>
+
 <?php get_footer();

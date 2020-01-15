@@ -65,7 +65,7 @@ body {
     font-size: 16px;
     color: #333;
     min-width: 350px;
-    /*overflow: hidden;*/
+    overflow: hidden;
     scroll-behavior: smooth;
 }
 
@@ -174,6 +174,9 @@ body {
 }
 
 .nav div.logo a {
+    display: inline-block;
+    margin-top: 15px;
+    width: 100px;
     text-decoration: none;
     color: #000;
 }
@@ -1328,9 +1331,9 @@ label {
 }
 
 .login-page img {
-    width: 30px;
-    height: 30px;
-    text-align: center;
+    width: 20%;
+    float: right;
+    padding: 10px;
 }
 
 .login-page {
@@ -1358,6 +1361,10 @@ label {
     padding: 15px;
     box-sizing: border-box;
     font-size: 14px;
+}
+
+#password_show {
+    width: 80%;
 }
 
 .form-login input[type="submit"] {
@@ -1394,7 +1401,7 @@ label {
 
 .progress-container {
     width: 100%;
-    height: 2px;
+    height: 3px;
     background: #ddd;
     position: fixed;
     z-index: 50;
@@ -1402,7 +1409,7 @@ label {
 }
 
 .progress-bar {
-    height: 2px;
+    height: 3px;
     background: #5de65d;
     position: fixed;
     z-index: 50;
@@ -1492,4 +1499,3 @@ label {
         padding: 0;
     }
 }
-

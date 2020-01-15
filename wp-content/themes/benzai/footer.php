@@ -70,14 +70,33 @@
 </div>
 <?php wp_footer(); ?>
 
+
+<!--Show and Hide password login form-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("password_show");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        var x = document.getElementById("password_confirmed_show");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+
 <!--Scroll indicator animation-->
 <script>
     // When the user scrolls the page, execute myFunction
     window.onscroll = function () {
-        myFunction()
+        myFunctionScroll()
     };
 
-    function myFunction() {
+    function myFunctionScroll() {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
@@ -123,23 +142,8 @@
     });
 </script>
 
-<!--Show and Hide password login form-->
-<script>
-    function myFunction() {
-        var x = document.getElementById("password_show");
-        var y = document.getElementById("password_confirmed_show")
-        if (x.type === "password" && y.type === "password") {
-            x.type = "text";
-            y.type = "text";
-        } else {
-            x.type = "password";
-            y.type = "password";
-        }
-    }
-</script>
-
 <!--Change img while click on it-->
-<script language="javascript">
+<script>
     function changeImage() {
 
         if (document.getElementById("imgClickAndChange").src === "<?= get_template_directory_uri() . '/assets/img/icons/hide.png'; ?>") {
@@ -152,27 +156,27 @@
 
 <!--Loading page-->
 <script>
-    $(window).on("load", function () {
-        setTimeout(function () {
-            $(".loader-wrapper").fadeOut("slow");
-        }, 2000);
-    });
+   $(window).on("load", function () {
+       setTimeout(function () {
+           $(".loader-wrapper").fadeOut("slow");
+       }, 2000);
+   });
 
-    $(function () {
-        setTimeout(function () {
-            $('html, body')
-                .css({
-                    'overflow': 'auto'
-                })
-                .animate({
-                    scrollTop: $('.myDiv').offset().top
-                }, 2000);
-        }, 2000);
-    });
+   $(function () {
+       setTimeout(function () {
+           $('html, body')
+               .css({
+                   'overflow': 'auto'
+               })
+               .animate({
+                   scrollTop: $('.myDiv').offset().top
+               }, 2000);
+       }, 2000);
+   });
 
-    $(document).ready(function () {
-        $(this).scrollTop(0);
-    });
+   $(document).ready(function () {
+       $(this).scrollTop(0);
+   });
 </script>
 
 </body>
