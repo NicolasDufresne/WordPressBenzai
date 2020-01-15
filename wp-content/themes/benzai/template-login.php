@@ -30,8 +30,9 @@ endif;
                 <input type="text" name="login" placeholder="Adresse mail ou nom utilisateur"/>
                 <input type="password" name="password" placeholder="Mot de passe"/>
                 <input type="submit" name="submitted" value="Connexion"/>
-                <p class="message">Pas de compte ? <a
-                            href="<?php echo esc_url(home_url('register')); ?>">Inscrivez-vous</a></p>
+                <p class="message">Pas de compte ?
+                    <a href="<?php echo esc_url(home_url('register')); ?>">Inscrivez-vous</a>
+                </p>
             </form>
         </div>
     </div>

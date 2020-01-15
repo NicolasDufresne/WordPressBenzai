@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="blog-slide-img">
                     <?= the_post_thumbnail('', array('class' => 'img-home')); ?>
-                    <div class="centered wow fadeIn">
+                    <div class="centered wow fadeIn" data-wow-delay="3s">
                         <?= get_the_title(); ?> <br/>
                         <a href="#">Commencer maintenant</a>
                     </div>

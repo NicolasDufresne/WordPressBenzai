@@ -70,6 +70,22 @@
 </div>
 <?php wp_footer(); ?>
 
+<!--Scroll indicator animation-->
+<script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+    }
+</script>
+
+<!--Navbar active when scroll-->
 <script>
     $(window).scroll(function () {
         if ($(document).scrollTop() > 50) {
@@ -89,6 +105,7 @@
     });
 </script>
 
+<!--Scroll to the top button-->
 <script>
     var btn = $('#scrollUp');
 
@@ -104,25 +121,9 @@
         e.preventDefault();
         $('html, body').animate({scrollTop: 0}, '300');
     });
-
-
 </script>
 
-<script>
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function () {
-        myFunction()
-    };
-
-    function myFunction() {
-        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var scrolled = (winScroll / height) * 100;
-        document.getElementById("myBar").style.width = scrolled + "%";
-    }
-</script>
-
-
+<!--Show and Hide password login form-->
 <script>
     function myFunction() {
         var x = document.getElementById("password_show");
@@ -136,6 +137,8 @@
         }
     }
 </script>
+
+<!--Change img while click on it-->
 <script language="javascript">
     function changeImage() {
 
@@ -146,6 +149,32 @@
         }
     }
 </script>
+
+<!--Loading page-->
+<script>
+    $(window).on("load", function () {
+        setTimeout(function () {
+            $(".loader-wrapper").fadeOut("slow");
+        }, 2000);
+    });
+
+    $(function () {
+        setTimeout(function () {
+            $('html, body')
+                .css({
+                    'overflow': 'auto'
+                })
+                .animate({
+                    scrollTop: $('.myDiv').offset().top
+                }, 2000);
+        }, 2000);
+    });
+
+    $(document).ready(function () {
+        $(this).scrollTop(0);
+    });
+</script>
+
 </body>
 
 </html>
