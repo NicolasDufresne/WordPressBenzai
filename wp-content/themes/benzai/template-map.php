@@ -43,12 +43,10 @@
             });
         }
 
-
-        //Appel à l'API
-        var request = JSON.parse(httpGet("https://angotbaptiste.com/test.php"));
+        var request = JSON.parse(httpGet("http://localhost:8000/glassdump/list"));
 
         map.on('load', function () {
-            map.loadImage('<?= get_template_directory_uri() ?>/poubelle.png', function (error, image) {
+            map.loadImage('https://media.discordapp.net/attachments/648455509195751424/667018365344153620/poubelle.png', function (error, image) {
                 if (error) throw "test";
                 map.addImage('poubelle', image);
                 // Add a new source from our GeoJSON data and set the
@@ -166,9 +164,7 @@
         });
         // Creation de la barre de recherche
         document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-        geocoder.on('results', function(results) {
-            console.log(results.query);
-        });
+        //
 
         //Creation de la geolocalisation
         map.addControl(new mapboxgl.GeolocateControl({
@@ -207,7 +203,6 @@
             map.addControl(GPS,'bottom-left');
         }
     }
-
     function httpGet(theUrl)
     {
         var xmlHttp = new XMLHttpRequest();
