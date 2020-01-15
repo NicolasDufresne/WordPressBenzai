@@ -1,4 +1,5 @@
 <?php /* Template Name: Map */ ?>
+
 <?php get_header(); ?>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
 <link
