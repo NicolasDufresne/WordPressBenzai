@@ -1,5 +1,11 @@
 <?php /* Template Name: Map */ ?>
 <?php get_header(); ?>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+<link
+        rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
+        type="text/css"
+/>
 <style>
     .geocoder {
         position: absolute;
@@ -14,8 +20,7 @@
     }
 </style>
 <div id='map' style='width: 1200px; height: 600px;'></div>
-<div id="geocoder" class="geocoder">
-</div>
+<div id="geocoder" class="geocoder"></div>
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
@@ -53,7 +58,7 @@
                     // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
                     // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
                     data: request,
-                    cluster: true,
+                    cluster: false,
                     clusterMaxZoom: 14, // Max zoom to cluster points on
                     clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
                 });
@@ -114,7 +119,7 @@
             // inspect a cluster on click
             map.on('click', 'clusters', function (e) {
                 var features = map.queryRenderedFeatures(e.point, {layers: ['clusters']});
-                var clusterId = features[0].properties.cluster_id;
+                var clusterId = features[0].properties.cluster_wid;
                 map.getSource('BIN').getClusterExpansionZoom(clusterId, function (err, zoom) {
                     if (err)
                         return;
@@ -126,18 +131,22 @@
                 });
             });
 
-            map.on('click','unclustered-point',function (e) {
-                var coordinates = e.features[0].geometry.coordinates.slice();
+            map.on('click','unclustered-point',function (f) {
+                var coordinates = f.features[0].geometry.coordinates.slice();
+                document.cookie = coordinates;
+                array = [];
+                array.push(document.cookie.split(';'));
 
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(
-                        "Ville: " +  e.features[0].properties.commune + "<br>" +
-                        "Adresse: " + e.features[0].properties.adresse + "<br>" +
-                        "Code postal: " + e.features[0].properties.code_com + "<br>" +
+                        "Ville: " +  f.features[0].properties.commune + "<br>" +
+                        "Adresse: " + f.features[0].properties.adresse + "<br>" +
+                        "Code postal: " + f.features[0].properties.code_com + "<br>" +
                         "Status: "+ " A DEFINIR" + "<br>" +
                         "<button> Bonne état </button><br>"+
                         "<button> Mauvaise état </button><br>"
+                        // "<button onclick= localStorage.setItem('Coords',array[0][0]);" + ">Test </button>"
                     )
                     .addTo(map);
             });
@@ -169,6 +178,34 @@
             showUserLocation: true,
             trackUserLocation: true
         }));
+
+        if (latitude !== 0 && longitude !== 0){
+            //Creation du GPS
+            var GPS = new MapboxDirections({
+                accessToken: mapboxgl.accessToken,
+                controls: {
+                    inputs: false,
+                },
+                interactive: true,
+                unit: 'metric',
+                language: 'fr',
+            });
+            map.addControl(GPS,'bottom-left');
+            GPS.setOrigin([longitude,latitude]);
+        }
+        else{
+            //Creation du GPS
+            var GPS = new MapboxDirections({
+                accessToken: mapboxgl.accessToken,
+                controls: {
+                    inputs: true,
+                },
+                interactive: true,
+                unit: 'metric',
+                language: 'fr',
+            });
+            map.addControl(GPS,'bottom-left');
+        }
     }
 
     function httpGet(theUrl)
@@ -187,6 +224,9 @@
     function error(err) {
         setup(0,0);
     }
+
+
     navigator.geolocation.getCurrentPosition(success, error);
+
 </script>
 <?php get_footer(); ?>
