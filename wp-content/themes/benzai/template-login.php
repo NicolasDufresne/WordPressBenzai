@@ -1,6 +1,4 @@
-<?php /* Template Name: Login */ ?>
-
-<?php
+<?php /* Template Name: Login */
 
 if (isset($_POST['submitted'])):
 
@@ -36,7 +34,7 @@ if (isset($_POST['submitted'])):
     endif;
 
     if (is_wp_error($user_data)) {
-//        echo '<script>alert("Erreur de connexion")</script>';
+        echo '<script>alert("Erreur de connexion")</script>';
     } else {
         wp_clear_auth_cookie();
         do_action('wp_login', $user_data->ID);
@@ -44,7 +42,7 @@ if (isset($_POST['submitted'])):
         wp_set_auth_cookie($user_data->ID, true);
         $redirect_to = esc_url(home_url('/'));
         wp_safe_redirect($redirect_to);
-//        echo '<script>alert("Connecté")</script>';
+        echo '<script>alert("Connecté")</script>';
         exit;
     }
 endif;
