@@ -23,8 +23,6 @@ if (isset($_POST['submitted'])):
         'user_check' => $user_confirmed_password,
     );
 
-    if (isset($_POST['submitted']) && isset($errors)):
-
         //Check login
         if (empty($user_login)):
             $errors['user_login'] = 'Veuillez renseigner un identifiant';

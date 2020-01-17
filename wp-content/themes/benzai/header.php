@@ -48,9 +48,9 @@
 <body <?php body_class(); ?>>
 
 <!--Loading page-->
-<div class="loader-wrapper">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
+<!--<div class="loader-wrapper">-->
+<!--    <span class="loader"><span class="loader-inner"></span></span>-->
+<!--</div>-->
 
 <!--navbar-->
 <nav class="nav">
