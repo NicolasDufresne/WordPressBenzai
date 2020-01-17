@@ -64,7 +64,8 @@ if (isset($_POST['submitted'])):
         $headers = 'From : ' . get_option('admin_email') . "\r\n";
         wp_mail($user_email, $object, $msg, $headers);
 
-//        header("http://localhost/WordPressBenzaiTheme/login/");
+        //Location to index
+        header("http://localhost/WordPressBenzaiTheme/login/");
     }
 
 endif;
