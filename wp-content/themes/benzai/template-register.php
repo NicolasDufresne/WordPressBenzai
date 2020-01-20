@@ -1,6 +1,5 @@
-<?php /* Template Name: Register */ ?>
+<?php /* Template Name: Register */
 
-<?php
 if (isset($_POST['submitted'])):
     //Strip HTML and PHP tags from a string
     $user_login = strip_tags(trim($_POST['login']));
@@ -64,7 +63,8 @@ if (isset($_POST['submitted'])):
         $headers = 'From : ' . get_option('admin_email') . "\r\n";
         wp_mail($user_email, $object, $msg, $headers);
 
-//        header("http://localhost/WordPressBenzaiTheme/login/");
+        //Location to index
+        header("http://localhost/WordPressBenzaiTheme/login/");
     }
 
 endif;
@@ -93,7 +93,7 @@ endif;
                        placeholder="Mot de passe à nouveau">
                 <input type="submit" name="submitted" value="S'incrire">
                 <p class="message">Déjà inscrit ?
-                    <a href="<?php echo esc_url(home_url('register')); ?>">Connectez-vous</a>
+                    <a href="<?php echo esc_url(home_url('login')); ?>">Connectez-vous</a>
                 </p>
             </form>
         </div>

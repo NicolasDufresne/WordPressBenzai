@@ -159,7 +159,7 @@
    $(window).on("load", function () {
        setTimeout(function () {
            $(".loader-wrapper").fadeOut("slow");
-       }, 2000);
+       }, 1500);
    });
 
    $(function () {
@@ -170,8 +170,8 @@
                })
                .animate({
                    scrollTop: $('.myDiv').offset().top
-               }, 2000);
-       }, 2000);
+               }, 1500);
+       }, 1500);
    });
 
    $(document).ready(function () {

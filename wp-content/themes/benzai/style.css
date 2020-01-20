@@ -1390,6 +1390,7 @@ label {
     margin: 15px 0 0;
     color: #b3b3b3;
     font-size: 12px;
+    line-height: 20px;
 }
 
 .form-login .message a {
