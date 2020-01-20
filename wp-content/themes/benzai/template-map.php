@@ -16,16 +16,138 @@
         margin-left: -25%;
         top: 20px;
     }
-    .mapboxgl-ctrl-geocoder {
-        min-width: 50%;
+
+    .nav {
+        width: 150px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+    }
+
+    .nav div.main_list ul li a {
+        color: #EEEE;
+    }
+
+    .nav div.logo {
+        padding-left: 1.5em;
+    }
+
+    .arrow_right {
+        display: inline;
+    }
+
+    .nav div.main_list ul {
+        display: block;
+    }
+
+    .nav div.main_list ul li {
+        padding-right: 0;
+        color: white;
+    }
+
+    .container {
+        background-color: #111;
+        transform: translateX(calc(-100% + 20px));
+        transition: transform .4s cubic-bezier(.4, 0, .2, 1) .2s;
+        height: 100%;
+    }
+
+    .nav:hover .container {
+        transform: translateX(0);
+        transition-delay: 0s;
+    }
+
+    .link-container a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 6px 12px;
+    }
+
+    .link-container a:hover {
+        text-decoration: underline;
+        background-color: #ffffff21;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .nav * {
+        box-sizing: border-box;
+    }
+
+    .progress-container {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .navTrigger {
+            display: none;
+        }
+
+        .nav div.logo {
+            margin-left: 0;
+        }
+
+        .nav div.main_list {
+            width: 100%;
+            height: 0;
+            overflow: initial;
+        }
+
+        .nav div.show_list {
+            height: auto;
+            display: initial;
+        }
+
+        .nav div.main_list ul {
+            flex-direction: initial;
+            width: 100%;
+            height: 100vh;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: #111;
+            /*same background color of navbar*/
+            background-position: center top;
+        }
+
+        .nav div.main_list ul li {
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav div.main_list ul li a {
+            text-align: center;
+            width: 100%;
+            padding: 0;
+        }
+
+        .nav div.media_button {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .container {
+            transform: initial;
+        }
     }
 </style>
-<div id='map' style='width: 1200px; height: 600px;'></div>
+
+<div id='map' style='width: 100%; height: 95vh;'></div>
 <div id="geocoder" class="geocoder"></div>
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';
-    function setup(longitude,latitude) {
+
+    function setup(longitude, latitude) {
         if (longitude === 0 && latitude === 0) {
             //Creation de la map
             var map = new mapboxgl.Map({
@@ -130,7 +252,7 @@
                 });
             });
 
-            map.on('click','unclustered-point',function (f) {
+            map.on('click', 'unclustered-point', function (f) {
                 var coordinates = f.features[0].geometry.coordinates.slice();
                 document.cookie = coordinates;
                 array = [];
@@ -139,11 +261,11 @@
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(
-                        "Ville: " +  f.features[0].properties.commune + "<br>" +
+                        "Ville: " + f.features[0].properties.commune + "<br>" +
                         "Adresse: " + f.features[0].properties.adresse + "<br>" +
                         "Code postal: " + f.features[0].properties.code_com + "<br>" +
-                        "Status: "+ " A DEFINIR" + "<br>" +
-                        "<button> Bonne état </button><br>"+
+                        "Status: " + " A DEFINIR" + "<br>" +
+                        "<button> Bonne état </button><br>" +
                         "<button> Mauvaise état </button><br>"
                         // "<button onclick= localStorage.setItem('Coords',array[0][0]);" + ">Test </button>"
                     )
@@ -176,7 +298,7 @@
             trackUserLocation: true
         }));
 
-        if (latitude !== 0 && longitude !== 0){
+        if (latitude !== 0 && longitude !== 0) {
             //Creation du GPS
             var GPS = new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
@@ -187,10 +309,9 @@
                 unit: 'metric',
                 language: 'fr',
             });
-            map.addControl(GPS,'bottom-left');
-            GPS.setOrigin([longitude,latitude]);
-        }
-        else{
+            map.addControl(GPS, 'bottom-left');
+            GPS.setOrigin([longitude, latitude]);
+        } else {
             //Creation du GPS
             var GPS = new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
@@ -201,24 +322,24 @@
                 unit: 'metric',
                 language: 'fr',
             });
-            map.addControl(GPS,'bottom-left');
+            map.addControl(GPS, 'bottom-left');
         }
     }
-    function httpGet(theUrl)
-    {
+
+    function httpGet(theUrl) {
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-        xmlHttp.send( null );
+        xmlHttp.open("GET", theUrl, false); // false for synchronous request
+        xmlHttp.send(null);
         return xmlHttp.responseText;
     }
 
     /* Geolocalisation native navigateur*/
     function success(pos) {
-        setup(pos.coords.longitude,pos.coords.latitude);
+        setup(pos.coords.longitude, pos.coords.latitude);
     }
 
     function error(err) {
-        setup(0,0);
+        setup(0, 0);
     }
 
 
