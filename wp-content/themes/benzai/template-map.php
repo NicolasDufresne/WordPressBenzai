@@ -44,7 +44,7 @@
             });
         }
 
-        var request = JSON.parse(httpGet("http://localhost:8000/glassdump/list"));
+        var request = JSON.parse(httpGet("http://angpotbaptiste.com/test"));
 
         map.on('load', function () {
             map.loadImage('https://media.discordapp.net/attachments/648455509195751424/667018365344153620/poubelle.png', function (error, image) {
