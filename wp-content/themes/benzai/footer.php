@@ -154,12 +154,12 @@
     }
 </script>
 
-<!--Loading page-->
+<!--Loading page map-->
 <script>
    $(window).on("load", function () {
        setTimeout(function () {
-           $(".loader-wrapper").fadeOut("slow");
-       }, 1500);
+           $(".loader-wrapper-map").fadeOut("slow");
+       }, 4000); //time of loading
    });
 
    $(function () {
@@ -170,15 +170,23 @@
                })
                .animate({
                    scrollTop: $('.myDiv').offset().top
-               }, 1500);
-       }, 1500);
+               }, 500);
+       }, 500);
    });
-
-   $(document).ready(function () {
-       $(this).scrollTop(0);
-   });
+    // Come back to the top
+   // $(document).ready(function () {
+   //     $(this).scrollTop(0);
+   // });
 </script>
 
+<!--Loading other page-->
+<script>
+    $(window).on("load", function () {
+        setTimeout(function () {
+            $(".loader-wrapper").fadeOut("slow");
+        }, 500); //time of loading
+    });
+</script>
 </body>
 
 </html>

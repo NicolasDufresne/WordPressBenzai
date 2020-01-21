@@ -1,14 +1,5 @@
 <?php /* Template Name: Login */
 
-
-$user = wp_get_current_user();
-if ($user):
-    echo "connecté";
-else:
-    echo "pas connecté";
-endif;
-//return $user->exists();
-
 if (isset($_POST['submitted'])):
 
     $user_login = sanitize_user($_POST['login']);

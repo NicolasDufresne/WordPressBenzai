@@ -74,10 +74,7 @@ body {
     padding: 0 10px;
 }
 
-/*-- Inspiration taken from abdo steif -->
-/* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
-
-/* loader */
+/* loader all page*/
 .loader-wrapper {
     width: 100%;
     height: 100vh;
@@ -130,6 +127,81 @@ body {
 }
 
 @keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+
+    25% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+
+    75% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+
+/* loader map page*/
+.loader-wrapper-map {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.loader-map {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+}
+
+.loader-inner-map {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader-map {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner-map {
     0% {
         height: 0%;
     }
@@ -568,8 +640,6 @@ body {
     margin: 20px;
     font-size: 13px;
     line-height: 1.5;
-    background-color: whitesmoke;
-    /*height: 300px;*/
 }
 
 .container-box h1 {
