@@ -48,9 +48,9 @@
 <body <?php body_class(); ?>>
 
 <!--Loading page-->
-<!--<div class="loader-wrapper">-->
-<!--    <span class="loader"><span class="loader-inner"></span></span>-->
-<!--</div>-->
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
 
 <!--navbar-->
 <nav class="nav">
@@ -70,6 +70,10 @@
                 <li><a href="http://localhost/WordPressBenzaiTheme/#gallery">Galerie</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#clients">Avis utilisateur</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#contact">Nous contacter</a></li>
+                <?php      $current_user = wp_get_current_user();
+                if (user_can( $current_user, 'administrator' )) {
+                    ?> <li><a href="<?php echo esc_url(home_url('add-bin')); ?>">Add-Bin</a></li> <?php
+                } ?>
             </ul>
         </div>
         <span class="navTrigger">
