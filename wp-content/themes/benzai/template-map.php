@@ -176,7 +176,7 @@
             });
         }
 
-        var request = JSON.parse(httpGet("http://angpotbaptiste.com/test"));
+        var request = JSON.parse(httpGet("http://localhost:8000/glassdump/list"));
 
         map.on('load', function () {
             map.loadImage('https://media.discordapp.net/attachments/648455509195751424/667018365344153620/poubelle.png', function (error, image) {
@@ -319,7 +319,7 @@
                 unit: 'metric',
                 language: 'fr',
             });
-            map.addControl(GPS, 'bottom-left');
+            map.addControl(GPS, 'bottom-right');
             GPS.setOrigin([longitude, latitude]);
         } else {
             //Creation du GPS
@@ -332,7 +332,7 @@
                 unit: 'metric',
                 language: 'fr',
             });
-            map.addControl(GPS, 'bottom-left');
+            map.addControl(GPS, 'bottom-right');
         }
     }
 
