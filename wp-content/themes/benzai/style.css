@@ -1281,7 +1281,7 @@ footer {
 /* contact */
 
 #contact {
-    padding-bottom: 135px;
+    padding-bottom: 160px;
 }
 
 #form-global {
@@ -1402,7 +1402,8 @@ label {
     cursor: pointer;
 }
 
-.login-page img {
+.login-page img,
+.register-page img{
     width: 20%;
     float: right;
     padding: 10px;
@@ -1410,8 +1411,16 @@ label {
 
 .login-page {
     width: 360px;
-    padding: 8% 0 0;
+    padding: 12.5% 0 0;
     margin: auto;
+    height: 100vh;
+}
+
+.register-page {
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+    height: 100vh;
 }
 
 .form-login {
