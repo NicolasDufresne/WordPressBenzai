@@ -94,6 +94,14 @@
         display: none;
     }
 
+    .mapboxgl-ctrl-geocoder input[type="text"] {
+        text-align: center;
+    }
+
+    .mapboxgl-ctrl-geocoder {
+        margin-top: 50px;
+    }
+
     /*Responsive*/
     @media screen and (max-width: 1000px) {
         .navTrigger {
@@ -176,7 +184,7 @@
             });
         }
 
-        var request = JSON.parse(httpGet("http://localhost:8000/glassdump/list"));
+        var request = JSON.parse(httpGet("http://angotbaptiste.com/test"));
 
         map.on('load', function () {
             map.loadImage('https://media.discordapp.net/attachments/648455509195751424/667018365344153620/poubelle.png', function (error, image) {
