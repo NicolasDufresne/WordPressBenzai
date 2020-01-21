@@ -584,7 +584,6 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     text-transform: uppercase;
-    backdrop-filter: blur(100px);
     font-family: 'Oswald', sans-serif;
     font-size: 60px;
     letter-spacing: 10px;
