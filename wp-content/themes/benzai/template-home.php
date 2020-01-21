@@ -17,9 +17,9 @@
             <div class="container">
                 <div class="blog-slide-img">
                     <?= the_post_thumbnail('', array('class' => 'img-home')); ?>
-                    <div class="centered wow fadeIn" data-wow-delay="3s">
+                    <div class="centered wow fadeIn" data-wow-delay="1s">
                         <?= get_the_title(); ?> <br/>
-                        <a href="#">Commencer maintenant</a>
+                        <a href="<?php echo esc_url(home_url('map')); ?>">Commencer maintenant</a>
                     </div>
                 </div>
             </div> <?php

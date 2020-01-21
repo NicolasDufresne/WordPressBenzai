@@ -1,12 +1,20 @@
 <?php /* Template Name: Map */ ?>
 
 <?php get_header(); ?>
+
+<!--Loading page-->
+<div class="loader-wrapper-map">
+    <span class="loader-map"><span class="loader-inner-map"></span></span>
+</div>
+
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
 <link
         rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
         type="text/css"
 />
+
+<!--CSS-->
 <style>
     .geocoder {
         position: absolute;
@@ -19,7 +27,7 @@
 
     .nav {
         width: 150px;
-        height: 100%;
+        height: 110vh;
         display: flex;
         flex-direction: column;
         background-color: transparent;
@@ -86,6 +94,7 @@
         display: none;
     }
 
+    /*Responsive*/
     @media screen and (max-width: 1000px) {
         .navTrigger {
             display: none;
@@ -141,8 +150,9 @@
     }
 </style>
 
-<div id='map' style='width: 100%; height: 95vh;'></div>
+<div id='map' style='width: 100%; height: 100vh;'></div>
 <div id="geocoder" class="geocoder"></div>
+
 <script>
     //Token
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g';

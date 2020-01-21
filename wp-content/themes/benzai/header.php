@@ -65,9 +65,12 @@
              alt="arrow_right"
              width="10px" height="15px"/>
         <div id="mainListDiv" class="main_list">
-            <ul class="navlinks">
-                <li><a href="<?php echo esc_url(home_url('disconnect')); ?>">Disconnect</a></li>
-                <li><a href="<?php echo esc_url(home_url('login')); ?>">Connexion</a></li>
+            <ul class="navlinks"> <?php
+                if (is_user_logged_in()) { ?>
+                    <li><a href="<?php echo esc_url(home_url('disconnect')); ?>">Déconnexion</a></li> <?php
+                } else { ?>
+                    <li><a href="<?php echo esc_url(home_url('login')); ?>">Connexion</a></li> <?php
+                } ?>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#about">À propos</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#benzai">Qu'est-ce que Benzai ?</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#gallery">Galerie</a></li>

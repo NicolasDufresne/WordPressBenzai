@@ -57,20 +57,3 @@ add_action('wp_enqueue_scripts', 'benzai_scripts');
 
 add_image_size('users', 125, 125, true);
 add_image_size('img-gallery', 300, 300, true);
-
-/**
- * Function is Logged.
- */
-function isLogged($nomSession, $aSession, $bSession, $cSession, $dSession)
-{
-    if (!empty($_SESSION[$nomSession][$aSession])) {
-        if (!empty($_SESSION[$nomSession][$bSession])) {
-            if (!empty($_SESSION[$nomSession][$cSession])) {
-                if (!empty($_SESSION[$nomSession][$dSession])) {
-                    return TRUE;
-                }
-            }
-        }
-    }
-    return FALSE;
-}

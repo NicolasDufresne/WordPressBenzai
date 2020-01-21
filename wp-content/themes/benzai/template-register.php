@@ -73,7 +73,7 @@ endif;
 
 <?php get_header(); ?>
 
-    <div class="login-page">
+    <div class="register-page">
         <div class="form-login">
             <form class="register-form" method="post">
                 <span class="errors"><?= $errors['user_login'] ?></span>
