@@ -1,2 +1,2 @@
 # WordPressBenzai
-Theme WordPress Benzai.
+Thème WordPress pour le projet Benzai
