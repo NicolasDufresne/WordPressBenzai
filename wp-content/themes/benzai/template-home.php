@@ -288,17 +288,56 @@
         <div class="clear"></div>
     </section>
 
+<?php
+if (isset($_POST['submitted'])):
+    //errors
+    $errors = array();
+    $user_email = sanitize_user($_POST['email']);
+    $exists_email = email_exists($user_email);
+    $user_comment = strip_tags(trim($_POST['textarea']));
+
+    //Check comment
+    if (empty($user_comment)):
+        $errors['user_comment'] = 'Veuillez renseigner un commentaire.';
+    elseif (strlen($user_comment) < 3):
+        $errors['user_comment'] = 'Commentaire trop court.';
+    elseif (strlen($user_comment) > 500):
+        $errors['user_comment'] = 'Commentaire trop long.';
+    endif;
+
+    //Check email
+    if (empty($user_email)):
+        $errors['user_email'] = 'Veuillez renseigner un email';
+    endif;
+
+//    $reset = esc_url(g²et_site_url() . '/reset?user_login=' . $user_email . '&reset_key=' . $GLOBALS['reset_key']);
+
+    if ($exists_email):
+        $object = 'Contact form home page.';
+        $msg = <<<HTML
+		<div> $user_comment </div>
+HTML;
+        wp_mail($user_email, $object, $msg);
+        echo '<script>alert("Un mail à été envoyé.")</script>';
+    else:
+        $errors['user_email'] = 'Vous devez être inscrit chez nous pour nous contacter. Cette adresse mail n\'existe pas.';
+    endif;
+endif;
+?>
+
     <section id="contact">
         <div class="wrap">
             <h1 class="title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Nous contacter</h1>
             <hr/>
-            <form class="main-form" method="post">
+            <form class="main-form" method="post" action="#contact">
+                <span class="errors"><?= $errors['user_email'] ?></span>
                 <label for="email" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">Adresse
                     mail</label>
                 <input class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" name="email" id="email"
                        type="text" placeholder="Email" value=""/>
                 <label class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"
                        for="textarea">Commentaire</label>
+                <span class="errors"><?= $errors['user_comment'] ?></span>
                 <textarea class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" id="textarea"
                           name="textarea" placeholder="Commentaire"></textarea>
                 <div class="submit wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
