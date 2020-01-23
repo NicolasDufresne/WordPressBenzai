@@ -76,9 +76,10 @@
                 <li><a href="http://localhost/WordPressBenzaiTheme/#gallery">Galerie</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#clients">Avis utilisateur</a></li>
                 <li><a href="http://localhost/WordPressBenzaiTheme/#contact">Nous contacter</a></li>
-                <?php      $current_user = wp_get_current_user();
-                if (user_can( $current_user, 'administrator' )) {
-                    ?> <li><a href="<?php echo esc_url(home_url('add-bin')); ?>">Add-Bin</a></li> <?php
+                <?php $current_user = wp_get_current_user();
+                if (user_can($current_user, 'administrator')) {
+                    ?>
+                    <li><a href="<?php echo esc_url(home_url('add-bin')); ?>">Ajouter une poubelle</a></li> <?php
                 } ?>
             </ul>
         </div>
